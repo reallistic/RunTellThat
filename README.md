@@ -18,8 +18,13 @@ Distributed computing implementation for plex
  - Apache 2.x
  - curl
 
+#Pre-Istallation
+A few things are needed and assumed about your setup of plex prior to utilizing RTT:
+ - You ideally have 3 or more separate servers, with/without identical instances of PMS (in terms of library sections & channels installed) that you would like to incorporate in a distributed computing model where: 'server1' (let's call this the Master), recieves and funnels requests to 'server2' OR 'server3', depending on the current CPU/Network load of these machines (known as 'Slaves').
+ - You have # or more Plex.tv accounts ____
+ 
 #Installation
- Clone this repo into an apache webserver folder.
+ Clone this repo into an apache webserver folder on your Master server.
  ```
  $/var/www/plex/: clone https://github.com/rxsegrxup/RunTellThat.git
  ```
@@ -61,3 +66,4 @@ Start up apache and you're OFF!
  Ghost mode is a lot more complex as it requires a PMS server having the same IP as the RunTellThat (host) server.
  The idea, is that RunTellThat needs to have the same IP as PMS so that Plex.tv (MyPlex) knows to look at this IP for a PMS server.
  
+When installation is finished, verify that apache is running and actively listening on incoming port 32400. 
