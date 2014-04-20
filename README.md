@@ -7,7 +7,7 @@ Distributed computing implementation for plex
  - A MitM webserver to distribute or proxy access to arbitrary PMS nodes; A must-have for load-balancing shared access to a PMS cluster [which this hack facilitates]. 
  - A proxy to delegate channel access w/o permanently binding PMS to myPlex.
  - The foundation of a decent plex load balancer.
- - In effect, a workaround for plex sharing via MyPlex.
+ - A new paradigm for plex sharing.
  - A special hack that indeed will probably never be "officially" supported.
  
 #What this is **not**:
