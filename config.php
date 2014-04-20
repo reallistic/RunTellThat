@@ -17,3 +17,4 @@ $destuuid = "ProcessedMachineIdentifier";
 $log = "/path/to/logs/changeup.log";
 $loggingenabled = TRUE;
 $loghistorylength = 5;
+?>
