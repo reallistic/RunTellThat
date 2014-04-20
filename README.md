@@ -4,11 +4,10 @@ HalfHax for Plex
 Distributed computing implementation for plex
 
 #What this is:
- - A MitM webserver to distribute or proxy access to arbitrary PMS nodes.
- - A proxy server to delegate channel access to non-owners.
+ - A MitM webserver to distribute or proxy access to arbitrary PMS nodes; A must-have for load-balancing shared access to a PMS cluster, which this hack also facilitates. 
+ - A proxy to delegate channel access w/o permanently binding PMS to myPlex.
  - The foundation of a decent plex load balancer.
  - In effect, a workaround for plex sharing via MyPlex.
- - A must have for distributed PMS sharing.
  - A special hack that indeed will probably never be "officially" supported.
  
 #What this is **not**:
