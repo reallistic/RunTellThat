@@ -4,7 +4,7 @@ HalfHax for Plex
 Distributed computing implementation for plex
 
 #What this is:
- - A MitM webserver to distribute or proxy access to arbitrary PMS nodes; A must-have for load-balancing shared access to a PMS cluster, which this hack also facilitates. 
+ - A MitM webserver to distribute or proxy access to arbitrary PMS nodes; A must-have for load-balancing shared access to a PMS cluster [which this hack facilitates]. 
  - A proxy to delegate channel access w/o permanently binding PMS to myPlex.
  - The foundation of a decent plex load balancer.
  - In effect, a workaround for plex sharing via MyPlex.
@@ -18,7 +18,7 @@ Distributed computing implementation for plex
  - Apache 2.x
  - curl
 
-#How to setup
+#Installation
  Clone this repo into an apache webserver folder.
  ```
  $/var/www/plex/: clone https://github.com/rxsegrxup/HalfHax.git
@@ -45,7 +45,7 @@ NameVirtualHost *:32400
 Listen 32400
 ```
 Set the values in the config file. (More help below)
-Start up apache and your OFF!
+Start up apache and you're OFF!
 
 #How to use 
  There are two modes that this is accessible in. Lets call them IP mode, and Ghost mode.<br>
