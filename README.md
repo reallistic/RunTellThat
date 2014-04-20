@@ -1,4 +1,4 @@
-HalfHax for Plex
+RunTellThat (RTT) for Plex
 ============
 
 Distributed computing implementation for plex
@@ -18,7 +18,7 @@ Distributed computing implementation for plex
 #How to setup
  Clone this repo into an apache webserver folder.
  ```
- $/var/www/plex/: clone https://github.com/rxsegrxup/HalfHax.git
+ $/var/www/plex/: clone https://github.com/rxsegrxup/RunTellThat.git
  ```
  Utilize the following VirtualHost
  ```
@@ -30,9 +30,9 @@ Distributed computing implementation for plex
             AllowOverride All
     </Directory>
 
-    ErrorLog ${APACHE_LOG_DIR}/halfhaxerror.log
+    ErrorLog ${APACHE_LOG_DIR}/runtellthaterror.log
     LogLevel warn
-    CustomLog ${APACHE_LOG_DIR}/halfhaxaccess.log combined
+    CustomLog ${APACHE_LOG_DIR}/runtellthataccess.log combined
 </VirtualHost>
 ```
 Be sure to enable Listening on port 32400
@@ -50,11 +50,11 @@ Start up apache and your OFF!
  **IP Mode**:
  <br>
  IP mode is the simplest way to utilize this.
- This is done by manually configuring a plex server and for the hostname/ip use that of the HalfHax server.
- Or, simply navigate to HalfHax's server and log in as if you would normally access a plex web server.
+ This is done by manually configuring a plex server and for the hostname/ip use that of the RunTellThat server.
+ Or, simply navigate to RunTellThat's server and log in as if you would normally access a plex web server.
  <br>
  **Ghost Mode**
  <br>
- Ghost mode is a lot more complex as it requires a PMS server having the same IP as the HalfHax (host) server.
- The idea, is that HalfHax needs to have the same IP as PMS so that Plex.tv (MyPlex) knows to look at this IP for a PMS server.
+ Ghost mode is a lot more complex as it requires a PMS server having the same IP as the RunTellThat (host) server.
+ The idea, is that RunTellThat needs to have the same IP as PMS so that Plex.tv (MyPlex) knows to look at this IP for a PMS server.
  
