@@ -14,7 +14,6 @@ $lbuuidkvp = array(
 //Get the values below from the /var/lib/plexmediaserver/Library/Application Support/Plex Media Server/Preferences.xml
 //Server requests are being proxied to
 $destuuid = "ProcessedMachineIdentifier";
-$unm = ""; //Place holder. Will be overwritten
 $log = "/path/to/logs/changeup.log";
 $loggingenabled = TRUE;
 $loghistorylength = 5;
