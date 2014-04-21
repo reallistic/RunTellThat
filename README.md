@@ -1,7 +1,7 @@
 RunTellThat (for Plex)
 ============
 
-Distributed computing implementation for plex
+Distributed computing implementation for plex. Documentation/Explanation is [here] (https://docs.google.com/drawings/d/1gv_1zGANUaoiXvKYSVKILGWWNoUYZ9ajWIo3Z76XEps/edit?usp=sharing)
 
 #What this is:
  - A MitM webserver to distribute or proxy access to arbitrary PMS nodes; A must-have for load-balancing shared access to a PMS cluster [which this hack facilitates]. 
