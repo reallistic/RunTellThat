@@ -18,7 +18,8 @@ Distributed computing implementation for plex. Documentation/Explanation is [her
  - Apache 2.x
  - curl
  - ifstat
-
+ - python 2.x
+ 
 #Pre-Istallation
 A few things are assumed about your setup & usage of Plex prior to utilizing RTT:
  - You ideally have 3 or more separate servers, with/without identical instances of PMS (in terms of library sections & channels installed) that you would like to incorporate in a distributed computing model where: 'server1' (let's call this the Master), recieves and funnels requests to 'server2' OR 'server3', depending on the current CPU/Network load of these machines (known as 'Slaves').
