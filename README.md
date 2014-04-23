@@ -18,7 +18,7 @@ Distributed computing implementation for plex. Documentation/Explanation is [her
  - Apache 2.x
  - curl
  - ifstat
- - python 2.x
+ - python 2.7
  
 #Pre-Istallation
 A few things are assumed about your setup & usage of Plex prior to utilizing RTT:
