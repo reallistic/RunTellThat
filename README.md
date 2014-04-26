@@ -40,9 +40,9 @@ A few things are assumed about your setup & usage of Plex prior to utilizing RTT
             AllowOverride All
     </Directory>
 
-    ErrorLog ${APACHE_LOG_DIR}/halfhaxerror.log
+    ErrorLog ${APACHE_LOG_DIR}/rtterror.log
     LogLevel warn
-    CustomLog ${APACHE_LOG_DIR}/halfhaxaccess.log combined
+    CustomLog ${APACHE_LOG_DIR}/rttaccess.log combined
 </VirtualHost>
 ```
 Be sure to enable Listening on port 32400
@@ -52,6 +52,10 @@ NameVirtualHost *:32400
 Listen 32400
 ```
 Set the values in the config file. (More help below)
+Enable mod_rewrite
+```
+a2enmod rewrite
+```
 Start up apache and you're OFF!
 
 #How to use 
