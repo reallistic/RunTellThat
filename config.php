@@ -20,7 +20,7 @@ $loghistorylength = 5;
 $maxlogsize = 1* 1024 * 1024; //1MB
 
 $streamsize=10485760; //5MB. RTT Client streaming size. Not yet documented
-
+$enablerttclientmode=FALSE;// RTT Client mode will stream media instead of redirecting.
 //do not modify
 $unm = "";
 ?>
