@@ -19,7 +19,7 @@ Currently RTT only supports proxy of requests to a designated PMS. This is best 
  - A Plex Channel.
  - Chuck Norris's PMS farm
  
- #Please see the [FAQ] (https://github.com/rxsegrxup/RunTellThat/wiki/FAQ)
+##Please see the [FAQ] (https://github.com/rxsegrxup/RunTellThat/wiki/FAQ)
 
 #Requirements
  - Apache 2.x
