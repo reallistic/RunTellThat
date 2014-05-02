@@ -3,6 +3,10 @@ RunTellThat (for Plex)
 
 Distributed computing implementation for plex. Documentation/Explanation is [here] (https://docs.google.com/drawings/d/1gv_1zGANUaoiXvKYSVKILGWWNoUYZ9ajWIo3Z76XEps/edit?usp=sharing)
 
+#Current support:
+Currently RTT only supports proxy of requests to a designated PMS. This is best suited for sharing channels or providing an super user experience for a shared user. This is helpful for an application like [Serenity] (https://forums.plex.tv/index.php/forum/135-serenity-for-android/) which does not support myPlex shares.<br>
+[Here are instructions] (https://github.com/rxsegrxup/RunTellThat/wiki/Setup-Guide-to-Share-Channels)
+
 #What this is:
  - A MitM webserver to distribute or proxy access to arbitrary PMS slaves; A must-have for load-balancing shared access to a PMS cluster [which this hack facilitates]. 
  - A proxy to delegate channel access w/o permanently binding PMS to myPlex.
@@ -15,6 +19,8 @@ Distributed computing implementation for plex. Documentation/Explanation is [her
  - A Plex Channel.
  - Chuck Norris's PMS farm
  
+ #Please see the [FAQ] (https://github.com/rxsegrxup/RunTellThat/wiki/FAQ)
+
 #Requirements
  - Apache 2.x
  - curl
