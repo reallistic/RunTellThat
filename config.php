@@ -1,9 +1,9 @@
 <?php
 $token = ""; //MyPlex auth token of myplex user below
-$client = ""; //NOT USED -- client identifier of myplex user below
 $username = ""; //username of the myplex user owning the PMS server that requests are proxied to
 $lbip = ""; //IP or hostname (No port or protocol) of the PMS server having the same ip as the Load Balancer
-$destserver = ""; //IP or hostname (No port or protocol) of the PMS server that requests are proxied to
+$destserver = ""; //IP:port of the PMS server that requests are proxied to
+$destserverre = $destserver; //REMOTE IP:port of the PMS server that requests are proxied to
 $lbname = ""; //Friendly name of the PMS server having the same ip as the Load Balancer
 $destname = ""; //Friendly name of the PMS server that requests are proxied to
 //Get the values below from the /var/lib/plexmediaserver/Library/Application Support/Plex Media Server/Preferences.xml
@@ -17,4 +17,10 @@ $destuuid = "ProcessedMachineIdentifier";
 $log = "/path/to/logs/changeup.log";
 $loggingenabled = TRUE;
 $loghistorylength = 5;
+$maxlogsize = 1* 1024 * 1024; //1MB
+
+$streamsize=10485760; //5MB. RTT Client streaming size. Not yet documented
+
+//do not modify
+$unm = "";
 ?>
