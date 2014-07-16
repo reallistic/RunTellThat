@@ -40,7 +40,7 @@ A few things are assumed about your setup & usage of Plex prior to utilizing RTT
  ```
  Utilize the following VirtualHost
  ```
- <VirtualHost *:32401>
+ <VirtualHost *:32402>
     ServerAdmin webmaster@localhost
     DocumentRoot /var/www/plex
     <Directory />
@@ -53,11 +53,12 @@ A few things are assumed about your setup & usage of Plex prior to utilizing RTT
     CustomLog ${APACHE_LOG_DIR}/rttaccess.log combined
 </VirtualHost>
 ```
-Be sure to enable Listening on port 32401 (or whatever port you like)
+Be sure to enable Listening on port 32402 (or whatever port you like)
+(NOTE: PMS will run on 32400 AND 32401
 ```
 #apache2.conf OR ports.conf
-NameVirtualHost *:32401
-Listen 32401
+NameVirtualHost *:32402
+Listen 32402
 ```
 Set the values in the config file. (More help below)
 Enable mod_rewrite
