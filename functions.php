@@ -183,6 +183,7 @@ function swapBackBody($body){
 }
 
 function checkBlockUrls($ouri, $originalurl){
+	global $blocksections;
 	if( stripos($ouri, "/:/prefs") !== FALSE ||
 	    (stripos($ouri, "/:/plugins") !== FALSE && stripos($ouri, "/prefs") !== FALSE) ||
 	    stripos($ouri, "/system/appstore") !== FALSE ||
