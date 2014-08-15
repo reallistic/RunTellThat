@@ -66,7 +66,7 @@ Enable mod_rewrite
 a2enmod rewrite
 ```
 Start up apache and you're OFF!
-When installation is finished, verify that apache is running and actively listening on incoming port 32401.
+When installation is finished, verify that apache is running and actively listening on incoming port 32402.
 
 #How to use 
  There are two modes that this is accessible in. Lets call them IP mode, and Ghost mode.<br>
@@ -91,7 +91,7 @@ When installation is finished, verify that apache is running and actively listen
 * start pms
 * Accept EULA
 * set friendlyName to DummyPMS
-* map pms server to a user at manual port 32401
+* map pms server to a user at manual port 32402
 * retrive and store username=>machineid combo by accessing http://localhost:32400/ or use the registry key ProcessedMachineIdentifier
 * export (save) HKEY_CURRENT_USER\Software\Plex, Inc.\Plex Media Server as usernamePrefs.reg
 * repeat
@@ -103,7 +103,7 @@ When installation is finished, verify that apache is running and actively listen
 * start pms
 * Accept EULA
 * set friendlyName to DummyPMS
-* map pms server to a user at manual port 32401
+* map pms server to a user at manual port 32402
 * retrive and store username=>machineid combo by accessing http://localhost:32400/ or use the new Preferences.xml
 * backup the Preferences.xml as username.Preferences.xml
 * repeat
@@ -122,7 +122,7 @@ $username = "";
 $token = "";
 
 //global ip address:port of the current RTT server
-$lbip = "123.123.123.123:32401";
+$lbip = "123.123.123.123:32402";
 
 //ipaddress:port of the destination server
 $destserver = "123.123.123.321:32400";
@@ -144,15 +144,12 @@ $lbuuidkvp = array(
 //FUTURE: array of "friendlyName"=>"uuid" pairs
 $destuuid = "";
 
-//initialize var
-$unm = "";
+//DO NOT allow access to sections.
+$blocksections = TRUE;
 
 //configure logging
 $log = "/var/log/rtt/rtt.log";
 $loggingenabled = TRUE;
 $loghistorylength = 5;
 $maxlogsize = 1* 1024 * 1024; //1MB
-
-//RTT Client streaming. not used/documented
-$streamsize=10485760; //5MB
 ```
