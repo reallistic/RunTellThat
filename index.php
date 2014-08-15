@@ -91,7 +91,14 @@ if($unm == "" && ($utoken != "" || $uhtoken != "" ) ){
     $unm = getUsername($userheaders);
 }
 
-$output = sendRequest($finalurl, $headers, $_SERVER['REQUEST_METHOD']);
+$ch = curl_init($finalurl);
+curl_setopt($ch,CURLOPT_ENCODING, '');
+curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
+curl_setopt($ch,CURLOPT_VERBOSE,1);
+curl_setopt($ch, CURLOPT_HEADER, true);
+curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $_SERVER['REQUEST_METHOD']);
+$output = curl_exec($ch);
 
 //Get the response code before closing curl
 $httpCode = curl_getinfo ( $ch, CURLINFO_HTTP_CODE );

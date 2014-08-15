@@ -182,17 +182,6 @@ function swapBackBody($body){
 	return $body;
 }
 
-function sendRequest($finalurl, $headers, $method){
-	$ch = curl_init($finalurl);
-	curl_setopt($ch,CURLOPT_ENCODING, '');
-	curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
-	curl_setopt($ch,CURLOPT_VERBOSE,1);
-	curl_setopt($ch, CURLOPT_HEADER, true);
-	curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-	curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $method);
-	return curl_exec($ch);
-}
-
 function checkBlockUrls($ouri, $originalurl){
 	if( stripos($ouri, "/:/prefs") !== FALSE ||
 	    (stripos($ouri, "/:/plugins") !== FALSE && stripos($ouri, "/prefs") !== FALSE) ||
