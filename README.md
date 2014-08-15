@@ -1,7 +1,7 @@
 RunTellThat (for Plex)
 ============
 
-Distributed computing implementation for plex. Documentation/Explanation is [here] (https://docs.google.com/drawings/d/1gv_1zGANUaoiXvKYSVKILGWWNoUYZ9ajWIo3Z76XEps/edit?usp=sharing)
+Distributed computing implementation for plex. In-depth documentation/explanation including load balancing discussion is [here] (https://docs.google.com/drawings/d/1gv_1zGANUaoiXvKYSVKILGWWNoUYZ9ajWIo3Z76XEps/edit?usp=sharing)
 
 #Current support:
 Currently RTT only supports proxy of requests to a designated PMS. This is best suited for sharing channels or providing an super user experience for a shared user. This is helpful for an application like [Serenity] (https://forums.plex.tv/index.php/forum/135-serenity-for-android/) which does not support myPlex shares.<br>
