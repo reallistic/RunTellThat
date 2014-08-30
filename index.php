@@ -1,5 +1,5 @@
 <?php
-//v1.0
+//v2.0
 try{
     require 'config.php';
     require 'functions.php';
@@ -28,39 +28,65 @@ checkBlockUrls($ouri, $originalurl);
 $ruri = fixRequestUri($ouri);
 
 $finalurl = "http://$destserver$ruri";
+if($clientstreaming === FALSE && stripos($finalurl,"/library/parts/") !== FALSE || stripos($finalurl,"/video/:/transcode/") !== FALSE){
+    $finalurlre = "http://$destserverre$ruri";
+    header("Location: $finalurlre");
+    logger("Redirecting to reduce load");
+    exit;
+}
 foreach (getallheaders() as $name => $value) {
     $ovalue = $value;
-    switch ($name) {
-        case 'X-Plex-Token':
-            logger("fixing $name");
-            $uhtoken = $value;
-            logger("found user token $utoken");
-            $value = $token;
-            logger("adding $name $value");
-        break;
-        case 'X-Plex-Username':
-            logger("fixing $name");
-            $unm = $value;
-            logger("found username $unm");
-            $value = $username;
-            logger("adding $name $value");
-        break;
-        case 'Referer':
-        case 'Host':
-        case 'Origin':
-            logger("fixing $name");
-            $value = str_replace($lbip,$destserver, $value);
-            logger("adding $name $value");
-        break;
-        /*
-          //In my tests I found that the client identifier doesnt much matter.
-          //Only the username and token needs to be changed
-        case 'Cookie':
-            $value = replaceCookie($value, $client);
-        break;
-        case 'X-Plex-Client-Identifier':
-            $value = $client;
-        break;*/
+    if( $swapidentity === TRUE || $enableanonymousaccess === FALSE){
+        switch ($name) {
+            case 'X-Plex-Token':
+                logger("fixing $name");
+                $uhtoken = $value;
+                logger("found user token $uhtoken");
+                $value = $token;
+                logger("adding $name $value");
+            break;
+            case 'X-Plex-Username':
+                logger("fixing $name");
+                $unm = $value;
+                logger("found username $unm");
+                $value = $username;
+                logger("adding $name $value");
+            break;
+            case 'Referer':
+            case 'Host':
+            case 'Origin':
+                logger("fixing $name");
+                $value = str_replace($lbip,$destserver, $value);
+                logger("adding $name $value");
+            break;
+            case 'Range':
+                if($clientstreaming === TRUE && stripos($finalurl,"/library/parts/") !== FALSE){
+                    logger("checking range $value");
+                    $valsplit = explode("-",$value);
+                    $valsplit[0] = explode("=",$valsplit[0])[1];
+                    if(count($valsplit) > 1 && intval($valsplit[1])-intval($valsplit[0])>$streamsize){
+                        logger('fixing range');
+                        $newend=intval($valsplit[0])+$streamsize;
+                        $value = "bytes=".$valsplit[0]."-$newend";
+                    }
+                    elseif(count($valsplit) == 1 || (count($valsplit) ==2 && $valsplit[1]=="") ){
+                        logger('fixing range');
+                        $newend=intval($valsplit[0])+$streamsize;
+                        $value = "bytes=".$valsplit[0]."-$newend";
+                    }
+                    logger("adding $name $value");
+                }
+            break;
+            /*
+              //In my tests I found that the client identifier doesnt much matter.
+              //Only the username and token needs to be changed
+            case 'Cookie':
+                $value = replaceCookie($value, $client);
+            break;
+            case 'X-Plex-Client-Identifier':
+                $value = $client;
+            break;*/
+        }
     }
     if(stripos($name,"Accept") !== FALSE && stripos($value,"gzip") !== FALSE){
         //Detect gzip encoding
@@ -71,15 +97,9 @@ foreach (getallheaders() as $name => $value) {
     $userheaders[] = "$name: $ovalue";
 }
 
-if(stripos($finalurl,"/library/parts/") !== FALSE || stripos($finalurl,"/video/:/transcode/") !== FALSE){
-    $finalurlre = "http://$destserverre$ruri";
-    header("Location: $finalurlre");
-    logger("Redirecting to reduce load");
-    exit;
-}
 
-
-if($unm == "" && ($utoken != "" || $uhtoken != "" ) ){
+if($swapidentity === TRUE && $enableanonymousaccess === FALSE 
+    && $unm == "" && ($utoken != "" || $uhtoken != "" ) ){
     if($uhtoken == ""){
        $uhtoken = $utoken;
        $userheaders[] = "X-Plex-Token: $uhtoken";
@@ -90,7 +110,11 @@ if($unm == "" && ($utoken != "" || $uhtoken != "" ) ){
     logger("looking up username with token $utoken");
     $unm = getUsername($userheaders);
 }
-
+if( $namedusersonly === TRUE && !isset($lbuuidkvp[$unm]) ){
+    logger("blocking user $unm");
+    header("Location: $originalurl");
+    exit;
+}
 $ch = curl_init($finalurl);
 curl_setopt($ch,CURLOPT_ENCODING, '');
 curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
@@ -130,8 +154,9 @@ foreach($header as $value){
     }
     header("$value");
 }
-
-$body = swapBackBody($body);
+if( $swapidentity === TRUE && $enableanonymousaccess === FALSE ){
+    $body = swapBackBody($body);
+}
 
 if(($accepteh === TRUE && $acceptr === TRUE)){
     echo gzencode($body);
