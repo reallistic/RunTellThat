@@ -1,6 +1,9 @@
 RunTellThat (for Plex)
 ============
 
+
+# NOTE: This repo is currently no longer being actively developed. However, please leave comments (issues) and questions. The more people that are interested the more likely it is I will pick this back up.
+
 Distributed computing implementation for plex. In-depth documentation/explanation including load balancing discussion is [here] (https://docs.google.com/drawings/d/1gv_1zGANUaoiXvKYSVKILGWWNoUYZ9ajWIo3Z76XEps/edit?usp=sharing)
 
 #Current support:
